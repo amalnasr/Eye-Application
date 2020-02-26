@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/amal"
+    tools:context=".Addscchool">
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/eaddschool"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="67dp"
+                android:layout_marginLeft="67dp"
+                android:layout_marginTop="105dp"
+                android:layout_marginEnd="44dp"
+                android:layout_marginRight="44dp"
+                android:layout_marginBottom="200dp"
+                android:ems="10"
+                android:hint="@string/Addschool"
+                android:inputType="textPersonName"
+                android:textColorHighlight="#03A9F4"
+                android:textColorLink="#03A9F4"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/badd"
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="174dp"
+                android:layout_marginLeft="174dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="146dp"
+                android:layout_marginRight="146dp"
+                android:layout_marginBottom="220dp"
+                android:background="@drawable/loginbutton"
+                android:text="@string/Add"
+                android:textColor="#FAF5F5"
+                android:textColorHighlight="#53A8EE"
+                android:textSize="18sp"
+                android:textStyle="normal|bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.39"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eaddschool"
+                app:layout_constraintVertical_bias="1.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        app:itemIconSize="28dp"
+        app:labelVisibilityMode="auto"
+        android:background="#FFFFFF"
+        app:backgroundTint="#FDFFFFFF"
+        app:itemIconTint="#757879"
+        app:itemTextColor="#F55D5F61"
+        app:menu="@menu/bottom_navigation" />
+</RelativeLayout>

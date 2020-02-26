@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/amal"
+    tools:context=".teacherhomepage">
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+
+        app:backgroundTint="#FDFFFFFF"
+        app:itemIconTint="#757879"
+        app:itemRippleColor="#2196F3"
+        app:itemTextColor="#F55D5F61"
+        app:labelVisibilityMode="auto"
+        app:menu="@menu/bottom_navteacher"
+        tools:visibility="visible" />
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="250dp"
+
+        app:srcCompat="@drawable/evalouation" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="285dp"
+        android:layout_marginTop="365dp"
+        android:text="التقييم اليومي"
+        android:textColor="#FFC107"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

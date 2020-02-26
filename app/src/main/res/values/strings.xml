@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">عيْن</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="havepass">ليس لديك حساب؟</string>
+    <string name="doyouhavepass">انشاءحساب جديد</string>
+    <string name="hintpass">كلمةالسر</string>
+    <string name="title_activity_main_admin">MainAdmin</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="Addschool">اسم المدرسة</string>
+    <string name="Add">إضافة</string>
+    <string name="AddClassN">الصف الدراسي</string>
+    <string name="AddClassNumber">رقم الشعبة</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="pass">كلمةالمرور</string>
+    <string name="AddStudent">إضافة طالب</string>
+    <string name="AddTeacher">إضافة معلم</string>
+
+    <string name="input_error_name">الإسم مطلوب!</string>
+    <string name="input_error_email">البريد الإلكتروني مطلوب!</string>
+    <string name="input_error_password">كلمة المرور مطلوبة!</string>
+    <string name="input_error_phone">رقم الهوية مطلوب!</string>
+    <string name="input_error_password_length">يجب أن تكون كلمة المرور على الأقل 6 أحرف!</string>
+    <string name="input_error_phone_invalid">يجب أن يكون رقم الهوية مكون من 10 أرقام!</string>
+    <string name="registration_success">تم إنشاء الحساب بنجاح</string>
+    <string name="input_error_email_invalid">أدخل بريد الكتروني صالح للإستخدام!</string>
+
+
+    <string name="title_activity_addstudent">addstudent</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_add_student">Add_student</string>
+    <string name="dialog_title">المواد الدراسية</string>
+    <string name="dialog_title2">الصف الدراسي</string>
+
+
+    <string-array name="class_item">
+        <item>الصف الأول </item>
+        <item>الصف الثاني</item>
+        <item>الصف الثالث</item>
+    </string-array>
+
+    <string-array name="subject_item">
+        <item>القرآن الكريم </item>
+        <item>التوحيد</item>
+        <item>الفقه والسلوك</item>
+        <item>اللغة العربية[لغتي]</item>
+        <item>الرياضيات </item>
+        <item>العلوم</item>
+        <item>التربيةالفنية </item>
+        <item>التربية البدنية[بنين]</item>
+        <item>التربية الأسرية[بنات]</item>
+
+    </string-array>
+</resources>
