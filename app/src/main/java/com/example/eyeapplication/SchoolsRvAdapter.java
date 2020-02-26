@@ -1,5 +1,7 @@
 package com.example.eyeapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import java.util.List;
 public class SchoolsRvAdapter extends RecyclerView.Adapter<SchoolsRvAdapter.ViewHolder> {
     public List<School> schools;
     public SchoolsActivity schoolsActivity;
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
@@ -59,9 +63,11 @@ public class SchoolsRvAdapter extends RecyclerView.Adapter<SchoolsRvAdapter.View
 
         holder.name.setText(school.getName());
         holder.delete.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 schoolsActivity.deleteSchool(school.getId());
+
             }
         });
 
@@ -73,5 +79,6 @@ public class SchoolsRvAdapter extends RecyclerView.Adapter<SchoolsRvAdapter.View
         });
 
     }
+
 
 }
