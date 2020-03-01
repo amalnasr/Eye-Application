@@ -1,36 +1,34 @@
 package com.example.eyeapplication;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyeapplication.database.DatabaseStatements;
 import com.example.eyeapplication.database.User;
 
-import java.util.ArrayList;
-
 import static com.example.eyeapplication.database.DatabaseHelper.TEACHER;
 
 
-public class AddteacherInformation extends AppCompatActivity {
-    EditText nameT, subjectT, userT, passT, sectionT;
-    Button addTeacher;
-
+public class AddteacherInformation extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
+    EditText nameT, userT, passT;
+    Button addTeacher,delete;
+    Spinner subjectT , sectionT;
     //Spinner myspinner;
     Teacher teacher;
     //ValueEventListener listener;
     ImageView R1 ;
-    String[] listItems, arr;
-    boolean[] checkedItems;
-    ArrayList<Integer> mUserItems = new ArrayList<>();
+    //String[] listItems, arr;
+    //boolean[] checkedItems;
+    //ArrayList<Integer> mUserItems = new ArrayList<>();
 
     int schoolId = 0;
 
@@ -45,14 +43,15 @@ public class AddteacherInformation extends AppCompatActivity {
             schoolId = getIntent().getExtras().getInt("school_id");
         R1 = findViewById(R.id.imageViewT);
         nameT = (EditText) findViewById(R.id.nameT);
-        subjectT = (EditText) findViewById(R.id.subjectT);
-        sectionT = (EditText) findViewById(R.id.sectionT);
+        subjectT = (Spinner) findViewById(R.id.spinner2t);
+        sectionT = (Spinner) findViewById(R.id.spinner1t);
         //myspinner=(Spinner) findViewById(R.id.myspinner);
         userT = (EditText) findViewById(R.id.usernameT);
         passT = (EditText) findViewById(R.id.passT);
         addTeacher = (Button) findViewById(R.id.Tadd);
+        delete = (Button) findViewById(R.id.button3);
 
-        listItems = getResources().getStringArray(R.array.subject_item);
+     /*   listItems = getResources().getStringArray(R.array.subject_item);
         checkedItems = new boolean[listItems.length];
         R1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,8 +125,8 @@ public class AddteacherInformation extends AppCompatActivity {
                 String N = nameT.getText().toString().trim();
                 String U = userT.getText().toString().trim();
                 String p = passT.getText().toString().trim();
-                String S = sectionT.getText().toString().trim();
-                String S2 = subjectT.getText().toString().trim();
+                String S = sectionT.getSelectedItem().toString().trim();
+                String S2 = subjectT.getSelectedItem().toString().trim();
 
               /*  teacher.setSections(S);
                 teacher.setUsername(U);
@@ -157,6 +156,22 @@ public class AddteacherInformation extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onItemSelected(AdapterView<?>_adapterView, View view,
+                               int pos, long id) {
+        //Toast.makeText(this,_adapterView.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> _adapterView) {
+        // Another interface callback
+    }
+    public void ret(View view) {
+        Intent inten=new Intent(this,addteatcherandstudent.class);
+        startActivity(inten);
+    }
+
 }
 
 

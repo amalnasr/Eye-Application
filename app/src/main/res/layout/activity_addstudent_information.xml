@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/amal"
+    android:clickable="true"
     tools:context=".AddstudentInformation">
 
     <ImageView
@@ -27,8 +28,8 @@
         app:layout_constraintVertical_bias="0.559"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
 
-        tools:visibility="visible"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        tools:visibility="visible" />
 
     <EditText
         android:id="@+id/editText"
@@ -119,9 +120,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
-    <EditText
-        android:id="@+id/editText6"
-        style="@style/Widget.AppCompat.EditText"
+    <Spinner
+        android:id="@+id/sppinerS"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:layout_marginStart="99dp"
@@ -130,11 +130,9 @@
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:hint="المستوى"
-        android:inputType="textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="18sp"
+        android:entries="@array/class_item"
+        android:spinnerMode="dropdown"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.46"
@@ -142,9 +140,8 @@
         app:layout_constraintTop_toBottomOf="@+id/editText5"
         app:layout_constraintVertical_bias="0.492" />
 
-    <EditText
-        android:id="@+id/editText7"
-        style="@style/Widget.AppCompat.EditText"
+    <Spinner
+        android:id="@+id/spinner2"
         android:layout_width="300dp"
         android:layout_height="55dp"
         android:layout_marginStart="99dp"
@@ -153,30 +150,26 @@
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
         android:layout_marginBottom="135dp"
-        android:ems="10"
         android:hint="الفصل"
-        android:inputType="textMultiLine|textPersonName"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#E21A1717"
-        android:textSize="18sp"
+android:entries="@array/section_itemS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6"
+
         app:layout_constraintVertical_bias="0.72" />
 
     <Button
         android:id="@+id/button2"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="190dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/loginbutton"
         android:text="اضافة"
         android:textColor="#FDFCFC"
@@ -184,9 +177,29 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText7"
         app:layout_constraintVertical_bias="0.731" />
 
+    <Button
+        android:id="@+id/button3"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/loginbutton"
+        android:onClick="rete"
+        android:text="الغاء"
+        android:textColor="#FDFCFC"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

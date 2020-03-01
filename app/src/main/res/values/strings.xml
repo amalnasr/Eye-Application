@@ -36,9 +36,27 @@
 
 
     <string-array name="class_item">
-        <item>الصف الأول </item>
-        <item>الصف الثاني</item>
-        <item>الصف الثالث</item>
+        <item>الصف الأول الإبتدائي</item>
+        <item>الصف الثاني الإبتدائي</item>
+        <item>الصف الثالث الإبتدائي</item>
+    </string-array>
+
+    <string-array name="section_itemS">
+        <item>أ</item>
+        <item>ب</item>
+        <item>ج</item>
+    </string-array>
+
+    <string-array name="section_itemT">
+        <item>أولى/أ</item>
+        <item>أولى/ب</item>
+        <item>أولى/ج</item>
+        <item>ثاني/أ</item>
+        <item>ثاني/ب</item>
+        <item>ثاني/ج</item>
+        <item>ثالث/أ</item>
+        <item>ثالث/ب</item>
+        <item>ثالث/ج</item>
     </string-array>
 
     <string-array name="subject_item">
@@ -49,8 +67,7 @@
         <item>الرياضيات </item>
         <item>العلوم</item>
         <item>التربيةالفنية </item>
-        <item>التربية البدنية[بنين]</item>
-        <item>التربية الأسرية[بنات]</item>
+
 
     </string-array>
 </resources>

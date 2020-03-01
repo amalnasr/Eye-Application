@@ -5,9 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".addteatcherandstudent"
-    android:background="@drawable/amal"
     android:orientation="vertical">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="129dp"
+        android:background="@drawable/toolscreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="اضافة طلاب أو معلمين"
+        app:titleMarginStart="120dp"
+        app:titleMarginBottom="120dp"
+        app:titleTextColor="#FAFFFF"> </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"

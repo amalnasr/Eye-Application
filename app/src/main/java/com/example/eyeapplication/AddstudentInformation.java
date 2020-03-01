@@ -1,24 +1,26 @@
 package com.example.eyeapplication;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyeapplication.database.DatabaseStatements;
 
 import java.util.ArrayList;
 
-public class AddstudentInformation extends AppCompatActivity {
-    EditText name, motherid, fatherid, studentid, level, section;
-    Button add;
+public class AddstudentInformation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    EditText name, motherid, fatherid, studentid;
+    Spinner level,section;
+    Button add ,delete;
     StudentInformation student;
     ImageView R1 ;
     String[] listItems, arr;
@@ -36,23 +38,35 @@ public class AddstudentInformation extends AppCompatActivity {
         if (getIntent().hasExtra("school_id"))
             schoolId = getIntent().getExtras().getInt("school_id");
         R1 = findViewById(R.id.imageViewS);
-        listItems = getResources().getStringArray(R.array.class_item);
-        checkedItems = new boolean[listItems.length];
+        // listItems = getResources().getStringArray(R.array.class_item);
+       // checkedItems = new boolean[listItems.length];
         name = (EditText) findViewById(R.id.editText);
         motherid = (EditText) findViewById(R.id.editText2);
         fatherid = (EditText) findViewById(R.id.editText4);
         studentid = (EditText) findViewById(R.id.editText5);
-        level = (EditText) findViewById(R.id.editText6);
-        section = (EditText) findViewById(R.id.editText7);
+        delete = (Button) findViewById(R.id.button3);
         add = (Button) findViewById(R.id.button2);
         student = new StudentInformation();
+
+        level = (Spinner) findViewById(R.id.sppinerS);
+        level.setOnItemSelectedListener(this);
+
+        section = (Spinner) findViewById(R.id.spinner2);
+        section.setOnItemSelectedListener(this);
+
+
+
         R1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AddstudentInformation.this, addteatcherandstudent.class));
             }
         });
-        level.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+      /*  level.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddstudentInformation.this);
@@ -96,7 +110,7 @@ public class AddstudentInformation extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,8 +119,8 @@ public class AddstudentInformation extends AppCompatActivity {
                 String mi = motherid.getText().toString().trim();
                 String fi = fatherid.getText().toString().trim();
                 String Id = studentid.getText().toString().trim();
-                String le = level.getText().toString().trim();
-                String se = section.getText().toString().trim();
+                String le = level.getSelectedItem().toString().trim();
+                String se = section.getSelectedItem().toString().trim();
                 student.setName(nam);
                 student.setMid(mi);
                 student.setFid(fi);
@@ -122,5 +136,22 @@ public class AddstudentInformation extends AppCompatActivity {
                 AddstudentInformation.this.finish();
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?>_adapterView, View view,
+                               int pos, long id) {
+        //Toast.makeText(this,_adapterView.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> _adapterView) {
+        // Another interface callback
+    }
+
+    public void ret(View view) {
+        Intent inten=new Intent(this,addteatcherandstudent.class);
+        startActivity(inten);
     }
 }

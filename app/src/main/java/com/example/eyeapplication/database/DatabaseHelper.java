@@ -31,31 +31,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     String user_statement = "CREATE TABLE " + user + " ("
             + id + " INTEGER PRIMARY KEY AUTOINCREMENT , "
-            + name + " TEXT ,"
-            + email + " TEXT ,"
-            + identityId + " TEXT ,"
-            + password + " TEXT ,"
+            + name + " TEXT NOT NULL,"
+            + email + " TEXT NOT NULL UNIQUE,"
+            + identityId + " TEXT NOT NULL UNIQUE,"
+            + password + " TEXT NOT NULL ,"
             + type + " INTEGER );";
 
     String school_statement = "CREATE TABLE " + school + " ("
             + id + " INTEGER PRIMARY KEY AUTOINCREMENT , "
-            + name + " TEXT );";
+            + name + " TEXT NOT NULL );";
 
     String student_statement = "CREATE TABLE " + student + " ("
             + id + " INTEGER PRIMARY KEY AUTOINCREMENT , "
-            + name + " TEXT ,"
-            + motherId + " TEXT ,"
-            + fatherId + " TEXT ,"
-            + level + " TEXT ,"
-            + section + " TEXT ,"
+            + name + " TEXT NOT NULL ,"
+            + motherId + " TEXT NOT NULL UNIQUE,"
+            + fatherId + " TEXT NOT NULL UNIQUE ,"
+            + level + " TEXT NOT NULL,"
+            + section + " TEXT NOT NULL,"
             + schoolId + " INTEGER );";
 
     String teacher_statement = "CREATE TABLE " + teacher + " ("
             + id + " INTEGER PRIMARY KEY AUTOINCREMENT , "
             + teacherId + " INTEGER ,"
-            + name + " TEXT ,"
-            + subject + " TEXT ,"
-            + section + " TEXT ,"
+            + name + " TEXT NOT NULL,"
+            + subject + " TEXT NOT NULL,"
+            + section + " TEXT NOT NULL,"
             + schoolId + " INTEGER );";
 
     public DatabaseHelper(Context context) {
