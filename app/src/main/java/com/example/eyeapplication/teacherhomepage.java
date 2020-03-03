@@ -71,4 +71,9 @@ public class teacherhomepage extends AppCompatActivity {
 
         });
     }
+
+    public void tyr(View view) {
+        Intent im=new Intent(this,submitDuties.class);
+        startActivity(im);
+    }
 }
