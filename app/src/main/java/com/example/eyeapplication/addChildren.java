@@ -19,7 +19,7 @@ public class addChildren extends AppCompatActivity {
     }
 
     public void ms(View view) {
-        Intent y = new Intent(this,viewChildren.class);
+        Intent y = new Intent(this, viewChildrenpage.class);
         startActivity(y);
 
     }

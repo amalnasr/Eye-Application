@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/logoeye"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".viewChildren"></activity>
+        <activity android:name=".veiwchildren"></activity>
+        <activity android:name=".viewChildrenpage" />
         <activity android:name=".addChildren" />
         <activity android:name=".submitDuties" />
         <activity android:name=".evaluatestudents" />
