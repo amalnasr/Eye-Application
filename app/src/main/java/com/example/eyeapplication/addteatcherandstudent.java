@@ -7,9 +7,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class addteatcherandstudent extends AppCompatActivity {
     int schoolId = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,5 +61,6 @@ public class addteatcherandstudent extends AppCompatActivity {
         });
 
     }
+
 }
 
