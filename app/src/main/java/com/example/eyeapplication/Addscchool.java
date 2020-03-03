@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class Addscchool extends AppCompatActivity {
+    androidx.appcompat.widget.Toolbar tool;
     int count = 1;
     Button adds;
     EditText addschool;
@@ -30,7 +31,7 @@ public class Addscchool extends AppCompatActivity {
         addschool = (EditText) findViewById(R.id.eaddschool);
         adds = (Button) findViewById(R.id.badd);
         school = new School();
-
+        tool = findViewById(R.id.toolbar1T);
         adds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
