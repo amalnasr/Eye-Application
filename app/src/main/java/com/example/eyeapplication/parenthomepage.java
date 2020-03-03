@@ -45,7 +45,7 @@ public class parenthomepage extends AppCompatActivity {
                         return true;
 
                     case R.id.add_student:
-                        startActivity(new Intent(getApplicationContext(), AddstudentInformation.class));
+                        startActivity(new Intent(getApplicationContext(), addChildren.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }
