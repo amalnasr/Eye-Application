@@ -15,7 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class evaluatestudents extends AppCompatActivity {
-
+//hjgjkl;/asdfghjkl;fghjkl
     ListView list;
     DatabaseHelper mdb;
     SQLiteDatabase db;
