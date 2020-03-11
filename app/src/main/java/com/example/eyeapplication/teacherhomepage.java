@@ -26,27 +26,33 @@ public class teacherhomepage extends AppCompatActivity {
              V = findViewById(R.id.imageView5);
              T = findViewById(R.id.textView);
 
-             V.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     startActivity(new Intent (teacherhomepage.this,evaluatestudents.class));
-                 }
-             });
-        T.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent (teacherhomepage.this,evaluatestudents.class));
-            }
-        });
         if (getIntent().hasExtra("userId"))
             userId = getIntent().getExtras().getInt("userId");
 
         DatabaseStatements databaseStatements = new DatabaseStatements(this);
         teacher = databaseStatements.getTeacher(userId);
 
+             V.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v)
+                 {
+                     Intent intent = new Intent (teacherhomepage.this,evaluatestudents.class);
+                     intent.putExtra("userId",userId);
+                     startActivity(intent);
+                 }
+             });
+        T.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (teacherhomepage.this,evaluatestudents.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //bottomNavigationView.setSelectedItemId(R.id.add_school);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -60,8 +66,7 @@ public class teacherhomepage extends AppCompatActivity {
 
 
                     case R.id.home:
-                        // startActivity(new Intent(getApplicationContext(), AdminHome.class));
-                        overridePendingTransition(0, 0);
+
                         return true;
 
 
@@ -74,6 +79,7 @@ public class teacherhomepage extends AppCompatActivity {
 
     public void tyr(View view) {
         Intent im=new Intent(this,submitDuties.class);
+        im.putExtra("userId",userId);
         startActivity(im);
     }
 }

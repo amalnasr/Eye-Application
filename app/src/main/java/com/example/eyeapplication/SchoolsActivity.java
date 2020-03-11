@@ -4,13 +4,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eyeapplication.database.DatabaseStatements;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -51,6 +55,35 @@ public class SchoolsActivity extends AppCompatActivity {
 
         A = B.create();
 
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.add_school:
+                        startActivity(new Intent(getApplicationContext(), Addscchool.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
+
+                    case R.id.home:
+
+                        return true;
+
+                    case R.id.signout:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+
+        });
+
     }
 
     private void setupRv() {
@@ -80,5 +113,11 @@ public class SchoolsActivity extends AppCompatActivity {
         Intent intent = new Intent(SchoolsActivity.this,SchoolDetailActivity.class);
         intent.putExtra("schoolId",id);
         startActivity(intent);
+    }
+
+
+    public void back(View view) {
+        Intent inten = new Intent( SchoolsActivity.this, Addscchool.class);
+        startActivity(inten);
     }
 }

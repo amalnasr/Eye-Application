@@ -16,10 +16,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="اضافة مدرسة"
-        app:titleMarginStart="120dp"
-        app:titleMarginBottom="120dp"
-        app:titleTextColor="#FAFFFF"> </androidx.appcompat.widget.Toolbar>
+       >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="130dp"
+            android:text="إضافة مدرسة"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            ></TextView>
+
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -30,6 +43,27 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="232dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginBottom="64dp"
+                android:text="  يرجى ادخال اسم المدرسة المراد إضافتها"
+                android:textColor="#2683DD"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/eaddschool"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.677" />
 
             <EditText
                 android:id="@+id/eaddschool"
@@ -43,19 +77,23 @@
                 android:layout_marginBottom="200dp"
                 android:ems="10"
                 android:hint="@string/Addschool"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:textColorHighlight="#03A9F4"
                 android:textColorLink="#03A9F4"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.647"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.716"
+                android:backgroundTint="#FF51ADD6"
+                android:textCursorDrawable="@drawable/cursorcolor"
+                />
 
             <Button
                 android:id="@+id/badd"
 
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="174dp"
                 android:layout_marginLeft="174dp"
@@ -72,10 +110,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.39"
+                app:layout_constraintHorizontal_bias="0.505"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/eaddschool"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
@@ -89,8 +127,7 @@
         app:itemIconSize="28dp"
         app:labelVisibilityMode="auto"
         android:background="#FFFFFF"
-        app:backgroundTint="#FDFFFFFF"
-        app:itemIconTint="#757879"
-        app:itemTextColor="#F55D5F61"
+        app:itemTextColor="@drawable/navselector"
+        app:itemIconTint="@drawable/navselector"
         app:menu="@menu/bottom_navigation" />
 </RelativeLayout>

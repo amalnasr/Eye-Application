@@ -9,19 +9,40 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1T"
+        android:id="@+id/toolbar1School"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginBottom="129dp"
         android:background="@drawable/toolscreen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="اضافة طلاب أو معلمين"
-        app:titleMarginStart="120dp"
-        app:titleMarginBottom="120dp"
-        app:titleTextColor="#FAFFFF"> </androidx.appcompat.widget.Toolbar>
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="36dp"
+            android:layout_height="50dp"
+            android:onClick="back"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+            tools:ignore="VectorDrawableCompat"
+            tools:layout_editor_absoluteX="11dp"
+            android:layout_marginBottom="90dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:layout_marginBottom="80dp"
+            android:text="إضافة طلاب و معلمين"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/imagestudent"
@@ -59,16 +80,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="275dp"
         android:layout_marginLeft="275dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="81dp"
         android:layout_marginRight="81dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="299dp"
         android:text="إضافة طالب"
         android:textColor="#373A3A"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagestudent" />
 
@@ -76,17 +98,22 @@
         android:id="@+id/tteacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="83dp"
-        android:layout_marginLeft="83dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
         android:layout_marginBottom="299dp"
         android:text="إضافة معلم"
         android:textColor="#373A3A"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tstudent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageteacher" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

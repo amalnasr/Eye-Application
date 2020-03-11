@@ -7,19 +7,31 @@
     tools:context=".parenthomepage">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
+        android:id="@+id/toolbar1School"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginBottom="129dp"
         android:background="@drawable/toolscreen"
-
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="الصفحة الرئيسية"
-        app:titleMarginStart="120dp"
         app:titleMarginBottom="120dp"
-        app:titleTextColor="#FAFFFF"> </androidx.appcompat.widget.Toolbar>
+        app:titleMarginStart="120dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="115dp"
+            android:text="الصفحة الرئيسية"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            ></TextView>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -27,13 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        app:backgroundTint="#FDFFFFFF"
-        app:itemIconTint="#757879"
-        app:itemTextColor="#F55D5F61"
-        app:labelVisibilityMode="auto"
+        app:itemTextColor="@drawable/navselector"
+        app:itemIconTint="@drawable/navselector"
         app:menu="@menu/bottom_navpar" />
 
     <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="170dp"/>

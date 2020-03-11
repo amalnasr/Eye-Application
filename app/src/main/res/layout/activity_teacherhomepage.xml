@@ -4,22 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/amal"
     tools:context=".teacherhomepage">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1School"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/toolscreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMarginBottom="120dp"
+        app:titleMarginStart="120dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="120dp"
+            android:text="الصفحة الرئيسية"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            ></TextView>
+
+
+    </androidx.appcompat.widget.Toolbar>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-
-        app:backgroundTint="#FDFFFFFF"
-        app:itemIconTint="#757879"
-        app:itemRippleColor="#2196F3"
-        app:itemTextColor="#F55D5F61"
-        app:labelVisibilityMode="auto"
+        app:itemTextColor="@drawable/navselector"
+        app:itemIconTint="@drawable/navselector"
         app:menu="@menu/bottom_navteacher"
         tools:visibility="visible" />
 
@@ -28,7 +48,7 @@
         android:id="@+id/imageView5"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="260dp"
+        android:layout_marginLeft="225dp"
         android:layout_marginTop="250dp"
 
         app:srcCompat="@drawable/evalouation" />
@@ -37,7 +57,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="266dp"
+        android:layout_marginLeft="230dp"
         android:layout_marginTop="365dp"
         android:text="التقييم اليومي"
         android:textColor="#FFC107"
@@ -48,7 +68,7 @@
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="188dp"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="205dp"
         android:layout_marginRight="100dp"
         android:onClick="tyr"
@@ -58,7 +78,7 @@
         android:id="@+id/textViewHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
+        android:layout_marginLeft="75dp"
         android:layout_marginTop="365dp"
         android:text="رفع الواجب"
         android:textColor="#FFC107"

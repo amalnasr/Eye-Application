@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class Addscchool extends AppCompatActivity {
-    androidx.appcompat.widget.Toolbar tool;
+
     int count = 1;
     Button adds;
     EditText addschool;
@@ -31,7 +31,7 @@ public class Addscchool extends AppCompatActivity {
         addschool = (EditText) findViewById(R.id.eaddschool);
         adds = (Button) findViewById(R.id.badd);
         school = new School();
-        tool = findViewById(R.id.toolbar1T);
+
         adds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,22 +43,32 @@ public class Addscchool extends AppCompatActivity {
 
                 school.setName(addschool.getText().toString().trim());
 
+
+
                 DatabaseStatements databaseStatements = new DatabaseStatements(Addscchool.this);
-                school = databaseStatements.newSchool(school);
 
-                count = count + 1;
+                boolean exist = databaseStatements.schoolValidation(school.getName());
 
-                Toast.makeText(Addscchool.this, "تم إضافة المدرسة بنجاح", LENGTH_SHORT).show();
-                Intent i = new Intent(Addscchool.this, addteatcherandstudent.class);
-                i.putExtra("school_id", school.getId());
-                startActivity(i);
+                if (exist) {
+                    Toast.makeText(Addscchool.this, "هذه المدرسه مسجله بالفعل"
+                            , Toast.LENGTH_LONG).show();
+                } else {
+                    school = databaseStatements.newSchool(school);
+
+                    count = count + 1;
+
+                    Toast.makeText(Addscchool.this, "تم إضافة المدرسة بنجاح", LENGTH_SHORT).show();
+                    Intent i = new Intent(Addscchool.this, addteatcherandstudent.class);
+                    i.putExtra("school_id", school.getId());
+                    startActivity(i);
+                }
             }
         });
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //bottomNavigationView.setSelectedItemId(R.id.add_school);
+        bottomNavigationView.setSelectedItemId(R.id.add_school);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

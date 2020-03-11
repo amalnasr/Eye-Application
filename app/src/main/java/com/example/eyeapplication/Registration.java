@@ -61,7 +61,7 @@ public class Registration extends AppCompatActivity {
                     return;
                 }
 
-                if (password.length() < 7) {
+                if (password.length() < 6) {
                     passP.setError("ينبغي أن تكون كلمة المرور مكونة من 6 أحرف ع الأقل!");
                     return;
                 }
@@ -81,11 +81,17 @@ public class Registration extends AppCompatActivity {
                     Toast.makeText(Registration.this, "هذا البريد مستخدم بالفعل"
                             , Toast.LENGTH_LONG).show();
                 } else {
-                    user = databaseStatements.newUser(user);
+                    boolean exist2 = databaseStatements.userIdValidation(user.getIdentityId());
+                    if (exist2) {
+                        Toast.makeText(Registration.this, "رقم الهويه مستخدم بالفعل"
+                                , Toast.LENGTH_LONG).show();
+                    } else {
+                        user = databaseStatements.newUser(user);
 
-                    Toast.makeText(Registration.this,
-                            "تم التسجيل بنجاح", Toast.LENGTH_LONG).show();
-                    open();
+                        Toast.makeText(Registration.this,
+                                "تم التسجيل بنجاح", Toast.LENGTH_LONG).show();
+                        open();
+                    }
                 }
 
 //                fAuth.createUserWithEmailAndPassword(E,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -114,5 +120,10 @@ public class Registration extends AppCompatActivity {
     public void open1(View view) {
         startActivity(new Intent(Registration.this, Registration.class));
 
+    }
+
+    public void back(View view) {
+        Intent inten = new Intent( Registration.this, MainActivity.class);
+        startActivity(inten);
     }
 }

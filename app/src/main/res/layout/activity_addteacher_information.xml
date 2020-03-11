@@ -4,27 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/amal"
     tools:context=".AddteacherInformation">
 
-    <ImageView
-        android:id="@+id/imageViewT"
-        android:layout_width="50dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="411dp"
-        android:layout_marginRight="411dp"
-        android:layout_marginBottom="731dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1School"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="129dp"
+        android:background="@drawable/toolscreen"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+        >
+        <ImageView
+            android:id="@+id/imageViewS"
+            android:layout_width="50dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="90dp"
+            android:onClick="back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+
+            tools:ignore="VectorDrawableCompat"
+            tools:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="50dp"
+            android:text="إضافة معلومات المعلم"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            ></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <EditText
         android:id="@+id/nameT"
@@ -38,13 +59,16 @@
         android:layout_marginBottom="600dp"
         android:ems="10"
         android:hint="اسم المعلم"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.076"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
 
     <EditText
         android:id="@+id/usernameT"
@@ -57,13 +81,16 @@
         android:layout_marginBottom="230dp"
         android:ems="10"
         android:hint="اسم المستخدم"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameT"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.091"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
 
     <EditText
         android:id="@+id/passT"
@@ -76,13 +103,16 @@
         android:layout_marginBottom="190dp"
         android:ems="10"
         android:hint="كلمة المرور"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameT"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.095"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
 
     <Spinner
         android:id="@+id/spinner1t"
@@ -99,7 +129,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passT"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="0.238" />
 
     <Button
         android:id="@+id/Tadd"
@@ -107,9 +137,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
         android:layout_marginLeft="140dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/loginbutton"
         android:text="@string/Add"
         android:textColor="#F8F7F7"
@@ -117,7 +147,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -125,13 +155,13 @@
         style="@android:style/Widget.Button.Inset"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/loginbutton"
-        android:onClick="rete"
+        android:onClick="ret"
         android:text="الغاء"
         android:textColor="#FDFCFC"
         android:textSize="18sp"
@@ -147,15 +177,56 @@
         android:layout_height="55dp"
         android:layout_marginStart="99dp"
         android:layout_marginLeft="99dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="99dp"
         android:layout_marginRight="99dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="48dp"
         android:entries="@array/subject_item"
+
         app:layout_constraintBottom_toTopOf="@+id/Tadd"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-        app:layout_constraintVertical_bias="0.01999998" />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121dp"
+        android:layout_marginLeft="121dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="8dp"
+        android:text="اختر الفصل الذي سيقوم المعلم بتدريسه :    "
+        android:textColor="#2683DD"
+        android:textColorHint="#0B0A0A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner1t"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passT" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="126dp"
+        android:layout_marginLeft="126dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="7dp"
+        android:text="
+        اختر المادة الذي سيقوم المعلم بتدريسها : "
+        android:textColor="#2683DD"
+        android:textColorHint="#0B0A0A"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner2t"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1t" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

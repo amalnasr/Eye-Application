@@ -6,7 +6,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.eyeapplication.Homework;
+import com.example.eyeapplication.HomeworkAnswer;
+import com.example.eyeapplication.Rate;
 import com.example.eyeapplication.School;
+import com.example.eyeapplication.SchoolLevel;
 import com.example.eyeapplication.StudentInformation;
 import com.example.eyeapplication.Teacher;
 
@@ -53,6 +57,24 @@ public class DatabaseStatements {
         return found;
     }
 
+    public boolean userIdValidation(String id) {
+        openDatabase();
+        boolean found = false;
+
+        String statement = "SELECT " + DatabaseHelper.id + " FROM " + DatabaseHelper.user
+                + " WHERE " + DatabaseHelper.identityId + " = '" + id + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            found = true;
+        }
+
+        cursor.close();
+        closeDatabase();
+        return found;
+    }
+
     public User userLogin(String email, String password) {
         openDatabase();
         User user = null;
@@ -75,6 +97,47 @@ public class DatabaseStatements {
         cursor.close();
         closeDatabase();
         return user;
+    }
+
+    public void newSchoolLevels(List<SchoolLevel> schoolLevels) {
+        openDatabase();
+        for (SchoolLevel schoolLevel : schoolLevels) {
+            ContentValues cv = new ContentValues();
+
+            cv.put(DatabaseHelper.id, schoolLevel.getId());
+            cv.put(DatabaseHelper.level, schoolLevel.getLevel());
+            cv.put(DatabaseHelper.subject, schoolLevel.getSubject());
+
+            sqLiteDatabase.insert(DatabaseHelper.subjects, null, cv);
+        }
+        closeDatabase();
+    }
+
+    public List<SchoolLevel> getSubjectsByLevel(String level) {
+        openDatabase();
+        List<SchoolLevel> levels = new ArrayList<>();
+
+        String statement = "SELECT * FROM " + DatabaseHelper.subjects
+                + " WHERE " + DatabaseHelper.level + " = '" + level + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SchoolLevel schoolLevel = new SchoolLevel();
+
+                schoolLevel.setId(cursor.getInt(0));
+                schoolLevel.setLevel(cursor.getString(1));
+                schoolLevel.setSubject(cursor.getString(2));
+
+                levels.add(schoolLevel);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        closeDatabase();
+        return levels;
     }
 
     public User newUser(User user) {
@@ -143,6 +206,24 @@ public class DatabaseStatements {
         return teacher;
     }
 
+    public boolean schoolValidation(String name) {
+        openDatabase();
+        boolean found = false;
+
+        String statement = "SELECT " + DatabaseHelper.id + " FROM " + DatabaseHelper.school
+                + " WHERE " + DatabaseHelper.name + " = '" + name + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            found = true;
+        }
+
+        cursor.close();
+        closeDatabase();
+        return found;
+    }
+
     public School newSchool(School school) {
         openDatabase();
         ContentValues cv = new ContentValues();
@@ -201,6 +282,24 @@ public class DatabaseStatements {
         closeDatabase();
     }
 
+    public boolean studentValidation(String studentNumber) {
+        openDatabase();
+        boolean found = false;
+
+        String statement = "SELECT " + DatabaseHelper.id + " FROM " + DatabaseHelper.student
+                + " WHERE " + DatabaseHelper.studentNumber + " = '" + studentNumber + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            found = true;
+        }
+
+        cursor.close();
+        closeDatabase();
+        return found;
+    }
+
     public StudentInformation newStudent(StudentInformation studentInformation) {
         openDatabase();
         ContentValues cv = new ContentValues();
@@ -210,6 +309,8 @@ public class DatabaseStatements {
         cv.put(DatabaseHelper.fatherId, studentInformation.getFid());
         cv.put(DatabaseHelper.level, studentInformation.getLev());
         cv.put(DatabaseHelper.section, studentInformation.getSec());
+        cv.put(DatabaseHelper.studentNumber, studentInformation.getStudentid());
+        cv.put(DatabaseHelper.studentStatus, studentInformation.getStatus());
         cv.put(DatabaseHelper.schoolId, studentInformation.getSchoolId());
 
         int id = (int) sqLiteDatabase.insert(DatabaseHelper.student, null, cv);
@@ -237,7 +338,9 @@ public class DatabaseStatements {
                 student.setFid(cursor.getString(3));
                 student.setLev(cursor.getString(4));
                 student.setSec(cursor.getString(5));
-                student.setSchoolId(cursor.getInt(6));
+                student.setStudentid(cursor.getString(6));
+                student.setStatus(cursor.getInt(7));
+                student.setSchoolId(cursor.getInt(8));
                 studentInformations.add(student);
 
             } while (cursor.moveToNext());
@@ -246,6 +349,108 @@ public class DatabaseStatements {
         cursor.close();
         closeDatabase();
         return studentInformations;
+    }
+
+    public List<StudentInformation> getStudentsBySection(String section) {
+        openDatabase();
+        List<StudentInformation> studentInformations = new ArrayList<>();
+
+        String statement = "SELECT * FROM " + DatabaseHelper.student
+                + " WHERE " + DatabaseHelper.section + " = '" + section + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                StudentInformation student = new StudentInformation();
+                student.setId(cursor.getInt(0));
+                student.setName(cursor.getString(1));
+                student.setMid(cursor.getString(2));
+                student.setFid(cursor.getString(3));
+                student.setLev(cursor.getString(4));
+                student.setSec(cursor.getString(5));
+                student.setStudentid(cursor.getString(6));
+                student.setStatus(cursor.getInt(7));
+                student.setSchoolId(cursor.getInt(8));
+                studentInformations.add(student);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        closeDatabase();
+        return studentInformations;
+    }
+
+    public StudentInformation getStudentsByNumber(String studentNumber) {
+        openDatabase();
+        StudentInformation student = null;
+
+        String statement = "SELECT * FROM " + DatabaseHelper.student
+                + " WHERE " + DatabaseHelper.studentNumber + " = '" + studentNumber + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            student = new StudentInformation();
+            student.setId(cursor.getInt(0));
+            student.setName(cursor.getString(1));
+            student.setMid(cursor.getString(2));
+            student.setFid(cursor.getString(3));
+            student.setLev(cursor.getString(4));
+            student.setSec(cursor.getString(5));
+            student.setStudentid(cursor.getString(6));
+            student.setStatus(cursor.getInt(7));
+            student.setSchoolId(cursor.getInt(8));
+        }
+
+        closeDatabase();
+        return student;
+    }
+
+    public List<StudentInformation> getStudentsByMotherId(String motherId) {
+        openDatabase();
+        List<StudentInformation> studentInformations = new ArrayList<>();
+
+        String statement = "SELECT * FROM " + DatabaseHelper.student
+                + " WHERE " + DatabaseHelper.motherId + " = '" + motherId + "'"
+                + " AND " + DatabaseHelper.studentStatus + " = 1";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                StudentInformation student = new StudentInformation();
+                student.setId(cursor.getInt(0));
+                student.setName(cursor.getString(1));
+                student.setMid(cursor.getString(2));
+                student.setFid(cursor.getString(3));
+                student.setLev(cursor.getString(4));
+                student.setSec(cursor.getString(5));
+                student.setStudentid(cursor.getString(6));
+                student.setStatus(cursor.getInt(7));
+                student.setSchoolId(cursor.getInt(8));
+                studentInformations.add(student);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        closeDatabase();
+        return studentInformations;
+    }
+
+    public void updateStudentStatus(StudentInformation studentInformation) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.studentStatus, 1);
+
+        String selection = DatabaseHelper.id + " Like ?";
+        String[] selection_args = {String.valueOf(studentInformation.getId())};
+
+        sqLiteDatabase.update(DatabaseHelper.student, cv, selection, selection_args);
+        closeDatabase();
     }
 
     public void deleteStudent(Integer id) {
@@ -311,5 +516,109 @@ public class DatabaseStatements {
         sqLiteDatabase.execSQL(statement);
 
         closeDatabase();
+    }
+
+    public Homework newHomework(Homework homework) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.teacherId, homework.getTeacherId());
+        cv.put(DatabaseHelper.name, homework.getName());
+        cv.put(DatabaseHelper.section, homework.getSection());
+        cv.put(DatabaseHelper.subject, homework.getSubject());
+        cv.put(DatabaseHelper.schoolId, homework.getSchoolId());
+
+        int id = (int) sqLiteDatabase.insert(DatabaseHelper.homework, null, cv);
+        homework.setId(id);
+
+        closeDatabase();
+        return homework;
+    }
+
+    public HomeworkAnswer newHomeworkAnswer(HomeworkAnswer homeworkAnswer) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.homeworkId, homeworkAnswer.getTeacherId());
+        cv.put(DatabaseHelper.teacherId, homeworkAnswer.getTeacherId());
+        cv.put(DatabaseHelper.studentId, homeworkAnswer.getTeacherId());
+        cv.put(DatabaseHelper.answer, homeworkAnswer.getAnswer());
+        cv.put(DatabaseHelper.section, homeworkAnswer.getSection());
+        cv.put(DatabaseHelper.schoolId, homeworkAnswer.getSchoolId());
+
+        int id = (int) sqLiteDatabase.insert(DatabaseHelper.homework, null, cv);
+        homeworkAnswer.setId(id);
+
+        closeDatabase();
+        return homeworkAnswer;
+    }
+
+    public Rate newRate(Rate rate) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.teacherId, rate.getTeacherId());
+        cv.put(DatabaseHelper.subject, rate.getSubject());
+        cv.put(DatabaseHelper.studentId, rate.getTeacherId());
+        cv.put(DatabaseHelper.readCat, rate.getReadCat());
+        cv.put(DatabaseHelper.writeCat, rate.getWriteCat());
+        cv.put(DatabaseHelper.saveCat, rate.getSaveCat());
+        cv.put(DatabaseHelper.homeWorkCat, rate.getHomeworkCat());
+
+        int id = (int) sqLiteDatabase.insert(DatabaseHelper.rating, null, cv);
+        rate.setId(id);
+
+        closeDatabase();
+        return rate;
+    }
+
+    public Rate getSubjectRateForStudent(String subject, int studentId) {
+        openDatabase();
+        Rate rate = null;
+
+        String statement = "SELECT * FROM " + DatabaseHelper.rating
+                + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
+                + " AND " + DatabaseHelper.studentId + " = " + studentId;
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            rate = new Rate();
+            rate.setId(cursor.getInt(0));
+            rate.setTeacherId(cursor.getInt(1));
+            rate.setSubject(cursor.getString(2));
+            rate.setStudentId(cursor.getInt(3));
+            rate.setReadCat(cursor.getString(4));
+            rate.setWriteCat(cursor.getString(5));
+            rate.setSaveCat(cursor.getString(6));
+            rate.setHomeworkCat(cursor.getString(7));
+        }
+
+        closeDatabase();
+        return rate;
+    }
+
+    public Homework getSubjectHomeWorkForStudent(String subject, String section) {
+        openDatabase();
+        Homework homework = null;
+
+        String statement = "SELECT * FROM " + DatabaseHelper.homework
+                + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
+                + " AND " + DatabaseHelper.section + " = '" + section + "'";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            homework = new Homework();
+            homework.setId(cursor.getInt(0));
+            homework.setTeacherId(cursor.getInt(1));
+            homework.setName(cursor.getString(2));
+            homework.setSection(cursor.getString(3));
+            homework.setSubject(cursor.getString(4));
+            homework.setSchoolId(cursor.getInt(5));
+        }
+
+        closeDatabase();
+        return homework;
     }
 }

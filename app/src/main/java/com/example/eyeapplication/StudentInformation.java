@@ -4,6 +4,7 @@ public class StudentInformation {
     private Integer id;
     private Integer schoolId;
     private String name, motherid, fatherid, studentid, level, section;
+    Integer status;
 
     public String getName() {
         return name;
@@ -71,6 +72,19 @@ public class StudentInformation {
 
     public StudentInformation() {
 
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
 

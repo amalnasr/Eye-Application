@@ -8,7 +8,7 @@
    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
+        android:id="@+id/toolbar1School"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginBottom="129dp"
@@ -17,10 +17,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="إنشاء حساب"
-        app:titleMarginStart="160dp"
-        app:titleMarginBottom="120dp"
-        app:titleTextColor="#FAFFFF"> </androidx.appcompat.widget.Toolbar>
+        >
+        <ImageView
+            android:id="@+id/imageViewS"
+            android:layout_width="50dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="90dp"
+            android:onClick="back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+
+            tools:ignore="VectorDrawableCompat"
+            tools:visibility="visible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_marginLeft="60dp"
+            android:text="إنشاء حساب جديد"
+
+            android:textColor="#FAFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            ></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/imageViewR"
@@ -44,16 +68,18 @@
 
         tools:visibility="visible"
         tools:ignore="VectorDrawableCompat" />
+
+
     <Button
         android:id="@+id/button2"
         style="@android:style/Widget.Button.Inset"
-        android:layout_width="190dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="104dp"
         android:background="@drawable/loginbutton"
         android:text="انشاء حساب"
         android:textColor="#FCFAFA"
@@ -61,7 +87,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText7"
         app:layout_constraintVertical_bias="0.61" />
@@ -78,13 +104,16 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="البريد الالكتروني"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/editText9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText3"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintVertical_bias="0.597"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
 
     <EditText
         android:id="@+id/editText9"
@@ -97,12 +126,15 @@
         android:layout_marginBottom="204dp"
         android:ems="10"
         android:hint="كلمة المرور                                              : "
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
 
     <EditText
         android:id="@+id/editText3"
@@ -110,20 +142,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
-        android:layout_marginBottom="408dp"
+        android:layout_marginBottom="390dp"
         android:ems="10"
         android:hint="رقم الهوية "
         android:inputType="number"
+        android:maxLength="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText"
 
-
-
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor" />
 
     <EditText
         android:id="@+id/editText"
@@ -131,19 +165,23 @@
         android:layout_height="45dp"
         android:layout_marginStart="110dp"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="الإسم"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"

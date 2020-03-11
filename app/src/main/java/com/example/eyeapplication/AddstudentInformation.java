@@ -19,27 +19,27 @@ import java.util.ArrayList;
 public class AddstudentInformation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText name, motherid, fatherid, studentid;
-    Spinner level,section;
-    Button add ,delete;
+    Spinner level, section;
+    Button add, delete;
     StudentInformation student;
-    ImageView R1 ;
+    ImageView R1;
     String[] listItems, arr;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
 
     int schoolId = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addstudent_information);
 
 
-
         if (getIntent().hasExtra("school_id"))
             schoolId = getIntent().getExtras().getInt("school_id");
         R1 = findViewById(R.id.imageViewS);
         // listItems = getResources().getStringArray(R.array.class_item);
-       // checkedItems = new boolean[listItems.length];
+        // checkedItems = new boolean[listItems.length];
         name = (EditText) findViewById(R.id.editText);
         motherid = (EditText) findViewById(R.id.editText2);
         fatherid = (EditText) findViewById(R.id.editText4);
@@ -53,7 +53,6 @@ public class AddstudentInformation extends AppCompatActivity implements AdapterV
 
         section = (Spinner) findViewById(R.id.spinner2);
         section.setOnItemSelectedListener(this);
-
 
 
         R1.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +120,12 @@ public class AddstudentInformation extends AppCompatActivity implements AdapterV
                 String Id = studentid.getText().toString().trim();
                 String le = level.getSelectedItem().toString().trim();
                 String se = section.getSelectedItem().toString().trim();
+
+                if (nam.isEmpty() || mi.isEmpty() || fi.isEmpty() || Id.isEmpty() || le.isEmpty() || se.isEmpty()) {
+                    Toast.makeText(AddstudentInformation.this, "من فضلك إملا الحقل الفارغ", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 student.setName(nam);
                 student.setMid(mi);
                 student.setFid(fi);
@@ -128,30 +133,46 @@ public class AddstudentInformation extends AppCompatActivity implements AdapterV
                 student.setLev(le);
                 student.setSec(se);
                 student.setSchoolId(schoolId);
+                student.setStatus(0);
 
                 DatabaseStatements databaseStatements = new DatabaseStatements(AddstudentInformation.this);
-                databaseStatements.newStudent(student);
+                boolean exist = databaseStatements.studentValidation(student.getStudentid());
+                if (exist) {
+                    Toast.makeText(AddstudentInformation.this, "رقم الطالب مستخدم بالفعل"
+                            , Toast.LENGTH_LONG).show();
+                } else {
 
-                Toast.makeText(AddstudentInformation.this, "تم إضافة الطالب بنجاح!", Toast.LENGTH_LONG).show();
-                AddstudentInformation.this.finish();
+                    databaseStatements.newStudent(student);
+
+                    Toast.makeText(AddstudentInformation.this, "تم إضافة الطالب بنجاح!", Toast.LENGTH_LONG).show();
+                    AddstudentInformation.this.finish();
+                }
+
             }
         });
     }
 
     @Override
-    public void onItemSelected(AdapterView<?>_adapterView, View view,
+    public void onItemSelected(AdapterView<?> _adapterView, View view,
                                int pos, long id) {
         //Toast.makeText(this,_adapterView.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
     }
+
     @Override
     public void onNothingSelected(AdapterView<?> _adapterView) {
         // Another interface callback
     }
 
+    public void back(View view) {
+        Intent inten = new Intent( AddstudentInformation.this, addteatcherandstudent.class);
+        startActivity(inten);
+    }
+
+
     public void ret(View view) {
-        Intent inten=new Intent(this,addteatcherandstudent.class);
+        Intent inten = new Intent( AddstudentInformation.this, addteatcherandstudent.class);
         startActivity(inten);
     }
 }

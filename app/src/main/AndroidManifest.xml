@@ -9,7 +9,11 @@
         android:roundIcon="@drawable/logoeye"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".veiwchildren"></activity>
+        <activity android:name=".showRate"></activity>
+        <activity android:name=".showHomeWork" />
+        <activity android:name=".subjectActivity" />
+        <activity android:name=".teacherevaluation" />
+        <activity android:name=".veiwchildren" />
         <activity android:name=".viewChildrenpage" />
         <activity android:name=".addChildren" />
         <activity android:name=".submitDuties" />
@@ -22,7 +26,6 @@
         <activity android:name=".AddteacherInformation" />
         <activity android:name=".AddstudentInformation" />
         <activity android:name=".parentaccount" />
-        <activity android:name=".Addstudentfromparent" />
         <activity android:name=".Registration" />
         <activity android:name=".Addscchool" />
         <activity android:name=".addteatcherandstudent" />

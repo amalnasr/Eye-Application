@@ -22,7 +22,7 @@ public class addteatcherandstudent extends AppCompatActivity {
             schoolId = getIntent().getExtras().getInt("school_id");
 
         ImageView student = findViewById(R.id.imagestudent);
-        ImageView teacher = findViewById(R.id.imagestudent);
+        ImageView teacher = findViewById(R.id.imageteacher);
         TextView TS = findViewById(R.id.tstudent);
         TextView TT = findViewById(R.id.tteacher);
 
@@ -60,6 +60,11 @@ public class addteatcherandstudent extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void back(View view) {
+        Intent inten = new Intent(addteatcherandstudent.this, Addscchool.class);
+        startActivity(inten);
     }
 
 }

@@ -25,7 +25,7 @@ public class AddteacherInformation extends AppCompatActivity  implements Adapter
     //Spinner myspinner;
     Teacher teacher;
     //ValueEventListener listener;
-    ImageView R1 ;
+
     //String[] listItems, arr;
     //boolean[] checkedItems;
     //ArrayList<Integer> mUserItems = new ArrayList<>();
@@ -41,7 +41,7 @@ public class AddteacherInformation extends AppCompatActivity  implements Adapter
 
         if (getIntent().hasExtra("school_id"))
             schoolId = getIntent().getExtras().getInt("school_id");
-        R1 = findViewById(R.id.imageViewT);
+
         nameT = (EditText) findViewById(R.id.nameT);
         subjectT = (Spinner) findViewById(R.id.spinner2t);
         sectionT = (Spinner) findViewById(R.id.spinner1t);
@@ -168,10 +168,13 @@ public class AddteacherInformation extends AppCompatActivity  implements Adapter
         // Another interface callback
     }
     public void ret(View view) {
-        Intent inten=new Intent(this,addteatcherandstudent.class);
+        Intent inten=new Intent(AddteacherInformation.this,addteatcherandstudent.class);
         startActivity(inten);
     }
-
+    public void back(View view) {
+        Intent inten = new Intent(AddteacherInformation.this, addteatcherandstudent.class);
+        startActivity(inten);
+    }
 }
 
 

@@ -1,6 +1,8 @@
 package com.example.eyeapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -72,5 +74,9 @@ public class SchoolDetailActivity extends AppCompatActivity {
     public void deleteStudent(Integer id) {
         statements.deleteStudent(id);
         setupRv();
+    }
+    public void back(View view) {
+        Intent inten = new Intent( SchoolDetailActivity.this, SchoolsActivity.class);
+        startActivity(inten);
     }
 }
