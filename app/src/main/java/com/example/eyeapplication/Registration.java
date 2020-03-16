@@ -27,7 +27,7 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        R1 = findViewById(R.id.imageViewR);
+
         B = findViewById(R.id.button2);
         NameP = findViewById(R.id.editText);
         emailP = findViewById(R.id.editText4);
@@ -35,12 +35,7 @@ public class Registration extends AppCompatActivity {
         passP = findViewById(R.id.editText9);
 
 
-        R1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Registration.this, MainActivity.class));
-            }
-        });
+
 
         B.setOnClickListener(new View.OnClickListener() {
             @Override

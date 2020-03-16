@@ -578,7 +578,8 @@ public class DatabaseStatements {
 
         String statement = "SELECT * FROM " + DatabaseHelper.rating
                 + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
-                + " AND " + DatabaseHelper.studentId + " = " + studentId;
+                + " AND " + DatabaseHelper.studentId + " = " + studentId
+                + " AND " + DatabaseHelper.id +" = (SELECT MAX(" + DatabaseHelper.id + ") FROM " + DatabaseHelper.rating + ")";
 
         Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
 
@@ -604,7 +605,8 @@ public class DatabaseStatements {
 
         String statement = "SELECT * FROM " + DatabaseHelper.homework
                 + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
-                + " AND " + DatabaseHelper.section + " = '" + section + "'";
+                + " AND " + DatabaseHelper.section + " = '" + section + "'"
+                + " AND " + DatabaseHelper.id +" = (SELECT MAX(" + DatabaseHelper.id + ") FROM " + DatabaseHelper.homework + ")" ;
 
         Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
 

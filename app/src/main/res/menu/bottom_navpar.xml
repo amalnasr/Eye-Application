@@ -13,6 +13,6 @@
         android:title="الصفحة الرئيسية" />
     <item
         android:id="@+id/account"
-        android:icon="@drawable/ic_power_settings_new_black_24dp"
-        android:title="تسجيل الخروج" />
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:title="حسابي" />
 </menu>

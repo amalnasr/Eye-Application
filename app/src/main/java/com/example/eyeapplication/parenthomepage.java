@@ -49,7 +49,7 @@ public class parenthomepage extends AppCompatActivity {
 
 
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), editparentinformation.class));
                         overridePendingTransition(0, 0);
                         return true;
 
