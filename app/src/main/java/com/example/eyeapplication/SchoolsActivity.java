@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -109,15 +111,45 @@ public class SchoolsActivity extends AppCompatActivity {
 
     }
 
-    public void goToDetails(Integer id) {
+    public void goToDetails(final Integer id, View view) {
+        PopupMenu popup = new PopupMenu(SchoolsActivity.this, view);
+        //Inflating the Popup using xml file
+        popup.getMenuInflater().inflate(R.menu.pop_menu, popup.getMenu());
+
+        //registering popup with OnMenuItemClickListener
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.one:
+                        openAdd(id);
+                        break;
+
+                    case R.id.two:
+                        openView(id);
+                }
+                return true;
+            }
+        });
+
+        popup.show();//showing popup menu
+
+
+    }
+
+    private void openView(Integer id) {
         Intent intent = new Intent(SchoolsActivity.this,SchoolDetailActivity.class);
         intent.putExtra("schoolId",id);
         startActivity(intent);
     }
 
+    private void openAdd(Integer id) {
+        Intent intent = new Intent(SchoolsActivity.this,addteatcherandstudent.class);
+        intent.putExtra("school_id",id);
+        startActivity(intent);
+    }
+
 
     public void back(View view) {
-        Intent inten = new Intent( SchoolsActivity.this, Addscchool.class);
-        startActivity(inten);
+        finish();
     }
 }

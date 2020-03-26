@@ -45,7 +45,6 @@ public class viewChildrenpage extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent( viewChildrenpage.this, parenthomepage.class);
-        startActivity(inten);
+        finish();
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyeapplication.database.DatabaseStatements;
+import com.example.eyeapplication.notification.Notification;
 
 public class teacherevaluation extends AppCompatActivity {
 
@@ -19,10 +20,14 @@ public class teacherevaluation extends AppCompatActivity {
     int teacherId, studentId;
     String subject;
 
+    DatabaseStatements statements;
+    Teacher teacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacherevaluation);
+
+        statements = new DatabaseStatements(teacherevaluation.this);
 
         if (getIntent().hasExtra("tId"))
             teacherId = getIntent().getExtras().getInt("tId");
@@ -32,6 +37,8 @@ public class teacherevaluation extends AppCompatActivity {
 
         if (getIntent().hasExtra("subject"))
             subject = getIntent().getExtras().getString("subject");
+
+        teacher = statements.getTeacherById(teacherId);
 
         radioGroup1 = findViewById(R.id.radiogroup1);
         radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -113,8 +120,9 @@ public class teacherevaluation extends AppCompatActivity {
         }
 
         Rate rate = new Rate(teacherId, subject, studentId, score1, score2, score3, score4);
-        DatabaseStatements statements = new DatabaseStatements(teacherevaluation.this);
         statements.newRate(rate);
+
+
 
         Toast.makeText(teacherevaluation.this, "تم حفظ التقييم بنجاح", Toast.LENGTH_LONG).show();
 
@@ -122,7 +130,6 @@ public class teacherevaluation extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent( teacherevaluation.this, teacherhomepage.class);
-        startActivity(inten);
+        finish();
     }
 }

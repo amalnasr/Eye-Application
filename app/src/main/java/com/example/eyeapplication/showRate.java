@@ -99,7 +99,6 @@ public class showRate extends AppCompatActivity {
         }
     }
     public void back(View view) {
-        Intent inten = new Intent( showRate.this, subjectActivity.class);
-        startActivity(inten);
+        finish();
     }
 }

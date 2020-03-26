@@ -81,7 +81,7 @@ public class addChildren extends AppCompatActivity {
             } else {
                 databaseStatements.updateStudentStatus(studentInformation);
                 Toast.makeText(addChildren.this, "تم اضافه الطالب بنجاح", Toast.LENGTH_LONG).show();
-                finish();
+                startActivity(new Intent(getApplicationContext(), parenthomepage.class));
             }
         }else {
             Toast.makeText(addChildren.this, "لا يوجد طالب مسجل بهذا الرقم", Toast.LENGTH_LONG).show();

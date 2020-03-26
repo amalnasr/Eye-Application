@@ -56,7 +56,7 @@ public class evaluatestudents extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent(evaluatestudents.this, teacherhomepage.class);
+        Intent inten=new Intent(evaluatestudents.this,teacherhomepage.class);
         startActivity(inten);
     }
 }

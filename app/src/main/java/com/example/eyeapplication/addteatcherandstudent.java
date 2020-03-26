@@ -63,7 +63,7 @@ public class addteatcherandstudent extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent(addteatcherandstudent.this, Addscchool.class);
+        Intent inten=new Intent(addteatcherandstudent.this,Addscchool.class);
         startActivity(inten);
     }
 

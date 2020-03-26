@@ -81,6 +81,7 @@
         android:layout_marginLeft="75dp"
         android:layout_marginTop="365dp"
         android:text="رفع الواجب"
+        android:onClick="tyr"
         android:textColor="#FFC107"
         android:textSize="15sp"
         android:textStyle="bold" />

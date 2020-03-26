@@ -60,7 +60,9 @@ public class teacherhomepage extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.account:
 
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        Intent intent = new Intent (teacherhomepage.this,editteacherinformation.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
                         overridePendingTransition(0, 0);
                         return true;
 

@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyeapplication.database.DatabaseStatements;
 import com.example.eyeapplication.database.User;
+import com.example.eyeapplication.notification.Notification;
+import com.example.eyeapplication.notification.ShowNotification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -49,7 +51,9 @@ public class parenthomepage extends AppCompatActivity {
 
 
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        Intent intent1 = new Intent(getApplicationContext(), editparentinformation.class);
+                        intent1.putExtra("userId", userId);
+                        startActivity(intent1);
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -70,6 +74,26 @@ public class parenthomepage extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         studentInformationList = databaseStatements.getStudentsByMotherId(user.getIdentityId());
+
+        for (int s=0; s<studentInformationList.size(); s++) {
+            StudentInformation studentInformation = studentInformationList.get(s);
+
+            List<Notification> notifications = databaseStatements.getNotifications(studentInformation.getSchoolId());
+
+            for (int n = 0; n < notifications.size(); n++) {
+                Notification notification = notifications.get(n);
+                if (notification.getStudentId() == 0 ||
+                        studentInformation.getId() == (int) notification.getStudentId()){
+
+                    String title = notification.getTitle() + " للطالب "+ studentInformation.getName();
+
+                    ShowNotification.buildNotification(parenthomepage.this,"لديك إشعار جديد",title);
+
+                    databaseStatements.updateNotificationStatus(notification);
+                }
+            }
+        }
+
         list = (ListView) findViewById(R.id.list);
         ArrayAdapter adt = new ArrayAdapter<StudentInformation>(this,
                 android.R.layout.simple_list_item_1, studentInformationList);
