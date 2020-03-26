@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editteacherinformation">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1School"
         android:layout_width="match_parent"
@@ -16,13 +17,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleMarginBottom="120dp"
         app:titleMarginStart="120dp">
+
         <ImageView
             android:id="@+id/imageViewS"
             android:layout_width="50dp"
             android:layout_height="36dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="100dp"
             android:onClick="back"
-            android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,35 +32,169 @@
 
             tools:ignore="VectorDrawableCompat"
             tools:visibility="visible" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
             android:layout_marginLeft="120dp"
+            android:layout_marginBottom="60dp"
             android:text="حسابي"
 
             android:textColor="#FAFFFF"
             android:textSize="22sp"
-            android:textStyle="bold"
-            ></TextView>
-
+            android:textStyle="bold"></TextView>
 
 
     </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="600dp"
+        android:ems="10"
+        android:hint="اسم المعلم"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.076"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="230dp"
+        android:ems="10"
+        android:hint="اسم المستخدم"
+        android:inputType="text"
+        android:editable="false"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.091"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
+
+    <EditText
+        android:id="@+id/pw"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="190dp"
+        android:ems="10"
+        android:hint="كلمة المرور"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.095"
+        android:backgroundTint="#FF51ADD6"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        />
+
+    <EditText
+        android:id="@+id/section"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="#FF51ADD6"
+        android:editable="false"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="الفصل"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pw"
+        app:layout_constraintVertical_bias="0.114" />
+
+    <EditText
+        android:id="@+id/subject"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="#FF51ADD6"
+        android:editable="false"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="الماده"
+        android:textCursorDrawable="@drawable/cursorcolor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/section"
+        app:layout_constraintVertical_bias="0.182" />
+
+    <Button
+        android:id="@+id/update"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="104dp"
+        android:background="@drawable/loginbutton"
+        android:onClick="update"
+        android:text="تعديل"
+        android:textColor="#FCFAFA"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subject"
+        app:layout_constraintVertical_bias="0.333" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#FFFFFF"
-        app:itemTextColor="@drawable/navselector"
         app:itemIconTint="@drawable/navselector"
-        app:menu="@menu/bottom_navteacher"
-        tools:visibility="visible"
+        app:itemTextColor="@drawable/navselector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navteacher"
+        tools:visibility="visible"
 
         />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
