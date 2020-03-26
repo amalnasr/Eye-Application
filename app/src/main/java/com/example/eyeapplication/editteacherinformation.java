@@ -5,11 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.view.MenuItem;
-import android.view.View;
-
-
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,11 +13,9 @@ import android.widget.Toast;
 
 import com.example.eyeapplication.database.DatabaseStatements;
 import com.example.eyeapplication.database.User;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class editteacherinformation extends AppCompatActivity {
-
 
     int userId = -1;
     User user;
@@ -31,12 +24,10 @@ public class editteacherinformation extends AppCompatActivity {
 
     EditText name, username, pw, section,subject;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editteacherinformation);
-
 
         if (getIntent().hasExtra("userId"))
             userId = getIntent().getExtras().getInt("userId");
@@ -89,10 +80,10 @@ public class editteacherinformation extends AppCompatActivity {
 
         });
     }
-
     public void back(View view) {
         Intent inten = new Intent( editteacherinformation.this, MainActivity.class);
         startActivity(inten);
+
     }
 
     public void update(View view) {
@@ -125,6 +116,5 @@ public class editteacherinformation extends AppCompatActivity {
         databaseStatements.updateTeacher(teacher);
 
         Toast.makeText(editteacherinformation.this, "تم حفظ التعديل بنجاح", Toast.LENGTH_LONG).show();
-
     }
 }
