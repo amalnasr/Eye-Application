@@ -1,14 +1,5 @@
 package com.example.eyeapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,11 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyeapplication.database.DatabaseStatements;
 import com.example.eyeapplication.database.User;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class editparentinformation extends AppCompatActivity {
-
 
     int userId = -1;
     User user;
@@ -38,7 +27,6 @@ public class editparentinformation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editparentinformation);
-
 
         if (getIntent().hasExtra("userId"))
             userId = getIntent().getExtras().getInt("userId");
@@ -57,7 +45,6 @@ public class editparentinformation extends AppCompatActivity {
 
         pw = findViewById(R.id.pw);
         pw.setText(user.getPw());
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -92,8 +79,6 @@ public class editparentinformation extends AppCompatActivity {
 
         });
     }
-
-
 
     public void back(View view) {
         Intent inten = new Intent( editparentinformation.this, MainActivity.class);
