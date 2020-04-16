@@ -166,8 +166,7 @@ public class AddstudentInformation extends AppCompatActivity implements AdapterV
     }
 
     public void back(View view) {
-        Intent inten = new Intent( AddstudentInformation.this, addteatcherandstudent.class);
-        startActivity(inten);
+        finish();
     }
 
 

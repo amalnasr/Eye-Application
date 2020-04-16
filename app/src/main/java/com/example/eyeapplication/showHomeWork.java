@@ -37,7 +37,6 @@ public class showHomeWork extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent( showHomeWork.this, subjectActivity.class);
-        startActivity(inten);
+        finish();
     }
 }

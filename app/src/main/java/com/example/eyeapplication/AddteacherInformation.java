@@ -172,8 +172,7 @@ public class AddteacherInformation extends AppCompatActivity  implements Adapter
         startActivity(inten);
     }
     public void back(View view) {
-        Intent inten = new Intent(AddteacherInformation.this, addteatcherandstudent.class);
-        startActivity(inten);
+        finish();
     }
 }
 

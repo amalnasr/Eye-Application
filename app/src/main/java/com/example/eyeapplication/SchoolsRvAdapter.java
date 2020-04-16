@@ -74,7 +74,7 @@ public class SchoolsRvAdapter extends RecyclerView.Adapter<SchoolsRvAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                schoolsActivity.goToDetails(school.getId());
+                schoolsActivity.goToDetails(school.getId(),holder.itemView);
             }
         });
 

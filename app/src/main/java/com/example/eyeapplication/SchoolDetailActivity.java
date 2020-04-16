@@ -76,7 +76,6 @@ public class SchoolDetailActivity extends AppCompatActivity {
         setupRv();
     }
     public void back(View view) {
-        Intent inten = new Intent( SchoolDetailActivity.this, SchoolsActivity.class);
-        startActivity(inten);
+        finish();
     }
 }

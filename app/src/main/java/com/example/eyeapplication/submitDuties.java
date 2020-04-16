@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.eyeapplication.database.DatabaseStatements;
+import com.example.eyeapplication.notification.Notification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class submitDuties extends AppCompatActivity {
@@ -45,11 +46,20 @@ public class submitDuties extends AppCompatActivity {
         DatabaseStatements statements = new DatabaseStatements(submitDuties.this);
         statements.newHomework(homework);
 
+        Notification notification = new Notification();
+        notification.setTeacherId(teacher.getId());
+        notification.setStudentId(null);
+        notification.setSchoolId(teacher.getSchoolId());
+        notification.setStatus(1);
+        String title = "قام المعلم بأرسال واجب جديد في ماده" + " " + teacher.getSubject();
+        notification.setTitle(title);
+
+        statements.newNotification(notification);
+
         Toast.makeText(submitDuties.this," تم إرسال الواجب", Toast.LENGTH_LONG).show();
         finish();
     }
     public void back(View view) {
-        Intent inten = new Intent( submitDuties.this, teacherhomepage.class);
-        startActivity(inten);
+        finish();
     }
 }

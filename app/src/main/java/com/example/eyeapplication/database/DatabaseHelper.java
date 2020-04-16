@@ -32,6 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String homeWorkCat = "homework_category";
     public static final String studentNumber = "student_number";
     public static final String studentStatus = "student_status";
+    public static final String title = "title";
+    public static final String status = "status";
 
     public static final String user = "user";
     public static final String school = "school";
@@ -41,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String homeworkAnswer = "homework_answer";
     public static final String rating = "rating";
     public static final String subjects = "subjects";
+    public static final String notification = "notification";
 
 
     String user_statement = "CREATE TABLE " + user + " ("
@@ -106,6 +109,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + saveCat + " TEXT,"
             + homeWorkCat + " TEXT );";
 
+    String notification_statement = "CREATE TABLE " + notification + " ("
+            + id + " INTEGER PRIMARY KEY AUTOINCREMENT , "
+            + teacherId + " INTEGER ,"
+            + studentId + " INTEGER ,"
+            + schoolId + " INTEGER ,"
+            + title + " TEXT ,"
+            + status + " INTEGER DEFAULT 1 );";
+
     public DatabaseHelper(Context context) {
         super(context, "school.db", null, 1);
     }
@@ -120,6 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(homework_answer_statement);
         sqLiteDatabase.execSQL(rating_statement);
         sqLiteDatabase.execSQL(subjects_statement);
+        sqLiteDatabase.execSQL(notification_statement);
     }
 
     @Override
@@ -132,5 +144,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + homework_answer_statement);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + rating_statement);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + subjects_statement);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + notification_statement);
     }
 }

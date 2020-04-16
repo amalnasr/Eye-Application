@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/logoeye"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".showRate"></activity>
+        <activity android:name=".editparentinformation"></activity>
+        <activity android:name=".editteacherinformation" />
+        <activity android:name=".showRate" />
         <activity android:name=".showHomeWork" />
         <activity android:name=".subjectActivity" />
         <activity android:name=".teacherevaluation" />

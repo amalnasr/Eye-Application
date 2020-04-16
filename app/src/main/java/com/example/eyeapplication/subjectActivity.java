@@ -58,7 +58,6 @@ public class subjectActivity extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent(subjectActivity.this, viewChildrenpage.class);
-        startActivity(inten);
+        finish();
     }
 }

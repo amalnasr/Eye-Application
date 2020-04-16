@@ -13,6 +13,7 @@ import com.example.eyeapplication.School;
 import com.example.eyeapplication.SchoolLevel;
 import com.example.eyeapplication.StudentInformation;
 import com.example.eyeapplication.Teacher;
+import com.example.eyeapplication.notification.Notification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -182,12 +183,51 @@ public class DatabaseStatements {
         return user;
     }
 
+    public void updateUser(User user) {
+        openDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DatabaseHelper.name, user.getName());
+        contentValues.put(DatabaseHelper.password, user.getPw());
+
+        String selection = DatabaseHelper.id + " Like ?";
+
+        String[] selection_args = {String.valueOf(user.getId())};
+
+        sqLiteDatabase.update(DatabaseHelper.user, contentValues, selection, selection_args);
+        closeDatabase();
+    }
+
     public Teacher getTeacher(int userId) {
         openDatabase();
         Teacher teacher = null;
 
         String statement = "SELECT * FROM " + DatabaseHelper.teacher
                 + " WHERE " + DatabaseHelper.teacherId + " = " + userId;
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+        if (cursor.moveToFirst()) {
+            teacher = new Teacher();
+            teacher.setId(cursor.getInt(0));
+            teacher.setUserId(cursor.getInt(1));
+            teacher.setName(cursor.getString(2));
+            teacher.setSubject(cursor.getString(3));
+            teacher.setSections(cursor.getString(4));
+            teacher.setSchoolId(cursor.getInt(5));
+
+        }
+
+        cursor.close();
+        closeDatabase();
+        return teacher;
+    }
+
+    public Teacher getTeacherById(int id) {
+        openDatabase();
+        Teacher teacher = null;
+
+        String statement = "SELECT * FROM " + DatabaseHelper.teacher
+                + " WHERE " + DatabaseHelper.id + " = " + id;
 
         Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
         if (cursor.moveToFirst()) {
@@ -440,11 +480,11 @@ public class DatabaseStatements {
         return studentInformations;
     }
 
-    public void updateStudentStatus(StudentInformation studentInformation) {
+    public void updateStudentStatus(StudentInformation studentInformation, int status) {
         openDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(DatabaseHelper.studentStatus, 1);
+        cv.put(DatabaseHelper.studentStatus, status);
 
         String selection = DatabaseHelper.id + " Like ?";
         String[] selection_args = {String.valueOf(studentInformation.getId())};
@@ -478,6 +518,20 @@ public class DatabaseStatements {
 
         closeDatabase();
         return teacher;
+    }
+
+    public void updateTeacher(Teacher teacher) {
+        openDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DatabaseHelper.name, teacher.getName());
+
+        String selection = DatabaseHelper.id + " Like ?";
+
+        String[] selection_args = {String.valueOf(teacher.getId())};
+
+        sqLiteDatabase.update(DatabaseHelper.teacher, contentValues, selection, selection_args);
+        closeDatabase();
     }
 
     public List<Teacher> getTeachers(int schoolId) {
@@ -578,7 +632,8 @@ public class DatabaseStatements {
 
         String statement = "SELECT * FROM " + DatabaseHelper.rating
                 + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
-                + " AND " + DatabaseHelper.studentId + " = " + studentId;
+                + " AND " + DatabaseHelper.studentId + " = " + studentId
+                + " AND " + DatabaseHelper.id + " = (SELECT MAX(" + DatabaseHelper.id + ") FROM " + DatabaseHelper.rating + ")";
 
         Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
 
@@ -604,7 +659,8 @@ public class DatabaseStatements {
 
         String statement = "SELECT * FROM " + DatabaseHelper.homework
                 + " WHERE " + DatabaseHelper.subject + " = '" + subject + "'"
-                + " AND " + DatabaseHelper.section + " = '" + section + "'";
+                + " AND " + DatabaseHelper.section + " = '" + section + "'"
+                + " AND " + DatabaseHelper.id + " = (SELECT MAX(" + DatabaseHelper.id + ") FROM " + DatabaseHelper.homework + ")";
 
         Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
 
@@ -620,5 +676,64 @@ public class DatabaseStatements {
 
         closeDatabase();
         return homework;
+    }
+
+    public Notification newNotification(Notification notification) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.teacherId, notification.getTeacherId());
+        cv.put(DatabaseHelper.studentId, notification.getStudentId());
+        cv.put(DatabaseHelper.schoolId, notification.getSchoolId());
+        cv.put(DatabaseHelper.title, notification.getTitle());
+        cv.put(DatabaseHelper.status, notification.getStatus());
+
+        int id = (int) sqLiteDatabase.insert(DatabaseHelper.notification, null, cv);
+        notification.setId(id);
+
+        closeDatabase();
+        return notification;
+    }
+
+    public List<Notification> getNotifications(int schoolId) {
+        openDatabase();
+        List<Notification> notifications = new ArrayList<>();
+
+        String statement = "SELECT * FROM " + DatabaseHelper.notification
+                + " WHERE " + DatabaseHelper.schoolId + " = " + schoolId
+                + " AND " + DatabaseHelper.status + " = 1";
+
+        Cursor cursor = sqLiteDatabase.rawQuery(statement, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Notification notification = new Notification();
+                notification.setId(cursor.getInt(0));
+                notification.setTeacherId(cursor.getInt(1));
+                notification.setStudentId(cursor.getInt(2));
+                notification.setSchoolId(cursor.getInt(3));
+                notification.setTitle(cursor.getString(4));
+                notification.setStatus(cursor.getInt(5));
+                notifications.add(notification);
+
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        closeDatabase();
+        return notifications;
+    }
+
+    public void updateNotificationStatus(Notification notification) {
+        openDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(DatabaseHelper.status, 0);
+
+        String selection = DatabaseHelper.id + " Like ?";
+        String[] selection_args = {String.valueOf(notification.getId())};
+
+        sqLiteDatabase.update(DatabaseHelper.notification, cv, selection, selection_args);
+        closeDatabase();
     }
 }
