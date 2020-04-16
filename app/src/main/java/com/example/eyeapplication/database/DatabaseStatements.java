@@ -480,11 +480,11 @@ public class DatabaseStatements {
         return studentInformations;
     }
 
-    public void updateStudentStatus(StudentInformation studentInformation) {
+    public void updateStudentStatus(StudentInformation studentInformation, int status) {
         openDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(DatabaseHelper.studentStatus, 1);
+        cv.put(DatabaseHelper.studentStatus, status);
 
         String selection = DatabaseHelper.id + " Like ?";
         String[] selection_args = {String.valueOf(studentInformation.getId())};

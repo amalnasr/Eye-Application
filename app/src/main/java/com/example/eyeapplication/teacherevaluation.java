@@ -122,7 +122,15 @@ public class teacherevaluation extends AppCompatActivity {
         Rate rate = new Rate(teacherId, subject, studentId, score1, score2, score3, score4);
         statements.newRate(rate);
 
+        Notification notification = new Notification();
+        notification.setTeacherId(teacherId);
+        notification.setStudentId(studentId);
+        notification.setSchoolId(teacher.getId());
+        notification.setStatus(1);
+        String title = "قام المعلم بتقييم جديد للطالب في ماده" + " " + subject;
+        notification.setTitle(title);
 
+        statements.newNotification(notification);
 
         Toast.makeText(teacherevaluation.this, "تم حفظ التقييم بنجاح", Toast.LENGTH_LONG).show();
 

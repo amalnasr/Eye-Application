@@ -79,7 +79,7 @@ public class addChildren extends AppCompatActivity {
                 Toast.makeText(addChildren.this, "رقم هويه ولي الأمر المسجل لدي هذا الطالب ليس رقم هويتك . نأسف لا يمكننا عرض بياناته", Toast.LENGTH_LONG).show();
                 return;
             } else {
-                databaseStatements.updateStudentStatus(studentInformation);
+                databaseStatements.updateStudentStatus(studentInformation,1);
                 Toast.makeText(addChildren.this, "تم اضافه الطالب بنجاح", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(), parenthomepage.class));
             }

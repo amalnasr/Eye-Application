@@ -81,9 +81,7 @@ public class editparentinformation extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten = new Intent( editparentinformation.this, MainActivity.class);
-        startActivity(inten);
-
+        finish();
     }
 
     public void update(View view) {
@@ -98,7 +96,7 @@ public class editparentinformation extends AppCompatActivity {
         }
 
         if (pw.getText().toString().trim().length() < 6) {
-            Toast.makeText(editparentinformation.this, "كلمه المرور يجب ان تكون علي الاقل 6 أحرف أو أرقام", Toast.LENGTH_LONG).show();
+            Toast.makeText(editparentinformation.this, "كلمه المرور يجب ان تكون علي الاقل 6 حروف", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -111,7 +109,7 @@ public class editparentinformation extends AppCompatActivity {
 
         databaseStatements.updateUser(updateUser);
 
-        Toast.makeText(editparentinformation.this, "تم حفظ التعديل بنجاح", Toast.LENGTH_LONG).show();
+        Toast.makeText(editparentinformation.this, "تم تعديل الحساب بنجاح", Toast.LENGTH_LONG).show();
 
     }
 }

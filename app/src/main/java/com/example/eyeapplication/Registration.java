@@ -118,7 +118,6 @@ public class Registration extends AppCompatActivity {
     }
 
     public void back(View view) {
-        Intent inten=new Intent(Registration.this,MainActivity.class);
-        startActivity(inten);
+        finish();
     }
 }

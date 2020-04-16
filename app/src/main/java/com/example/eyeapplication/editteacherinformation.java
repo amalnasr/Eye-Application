@@ -81,9 +81,7 @@ public class editteacherinformation extends AppCompatActivity {
         });
     }
     public void back(View view) {
-        Intent inten = new Intent( editteacherinformation.this, MainActivity.class);
-        startActivity(inten);
-
+        finish();
     }
 
     public void update(View view) {
@@ -98,7 +96,7 @@ public class editteacherinformation extends AppCompatActivity {
         }
 
         if (pw.getText().toString().trim().length() < 6) {
-            Toast.makeText(editteacherinformation.this, "كلمه المرور يجب ان تكون علي الاقل 6 أخرف أو أرقام", Toast.LENGTH_LONG).show();
+            Toast.makeText(editteacherinformation.this, "كلمه المرور يجب ان تكون علي الاقل 6 حروف", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -115,6 +113,6 @@ public class editteacherinformation extends AppCompatActivity {
 
         databaseStatements.updateTeacher(teacher);
 
-        Toast.makeText(editteacherinformation.this, "تم حفظ التعديل بنجاح", Toast.LENGTH_LONG).show();
+        Toast.makeText(editteacherinformation.this, "تم تعديل الحساب بنجاح", Toast.LENGTH_LONG).show();
     }
 }

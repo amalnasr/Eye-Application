@@ -46,10 +46,18 @@ public class submitDuties extends AppCompatActivity {
         DatabaseStatements statements = new DatabaseStatements(submitDuties.this);
         statements.newHomework(homework);
 
+        Notification notification = new Notification();
+        notification.setTeacherId(teacher.getId());
+        notification.setStudentId(null);
+        notification.setSchoolId(teacher.getSchoolId());
+        notification.setStatus(1);
+        String title = "قام المعلم بأرسال واجب جديد في ماده" + " " + teacher.getSubject();
+        notification.setTitle(title);
 
+        statements.newNotification(notification);
 
         Toast.makeText(submitDuties.this," تم إرسال الواجب", Toast.LENGTH_LONG).show();
-
+        finish();
     }
     public void back(View view) {
         finish();
